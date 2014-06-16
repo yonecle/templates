@@ -1,0 +1,15 @@
+package "example-tool"
+version "0.1"
+
+option  "str-opt"     s "A string option, for a filename"  string typestr="filename" no 
+option  "my-opt"      m "Another integer option, this time the description of the option should be quite long to require wrapping... possibly  more than one wrapping :-) especially if I¥nrequire a line break" int no 
+option  "int-opt"     i "A int option"         int        yes 
+
+section "more involved options" sectiondesc="the following options¥nare more complex"
+option  "flag-opt"    - "A flag option"        flag       off
+option  "funct-opt"   F "A function option"    no
+
+section "last option section"
+option  "long-opt"    - "A long option"        long       no 
+option  "def-opt"     - "A string option with default"   string default="Hello" no
+option  "enum-opt"    - "A string option with list of values"  values="foo","bar","hello" default="hello" no
