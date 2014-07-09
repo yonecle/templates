@@ -1,0 +1,28 @@
+$packages = [
+  '<PACKAGE1>',
+  '<PACKAGE2>'
+]
+
+package { $packages:
+  ensure => installed
+}
+
+$port = <PORT>
+
+file { '<FILE>':
+  ensure => present,
+  owner => 'root',
+  group => 'root',
+  mode => '0644',
+  content => template('<TEMPLATE>'),
+  require => Package['<PACKAGE>'],
+  notify => Service['<SERVICE>'],
+}
+
+service { '<SERVICE>':
+  enable => true,
+  ensure => running,
+  hasrestart => true,
+  require => File[<FILE>],
+}
+
