@@ -1,0 +1,14 @@
+*.[ao]
+a.out
+cscope.out
+cscope.files
+Makefile
+autoscan.log
+autom4te.cache/
+config.h
+config.h.in~
+config.log
+config.status
+.deps/
+stamp-h1
+.*.swp
