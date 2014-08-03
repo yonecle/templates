@@ -1,0 +1,21 @@
+DESTDIR = 
+bindir  = 
+
+TARGET  = 
+FILES   = 
+OBJS     := $(FILES:.c=.o)
+
+all: $(TARGET)
+
+install:
+	mkdir -p $(DESTDIR)$(bindir)
+	$(INSTALL) -m 755 $(TARGET) $(DESTDIR)$(bindir)
+
+clean:
+	$(RM) $(TARGET) $(OBJS)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+$(TARGET) : $(OBJS)
+	$(CC) -o $@ $^
