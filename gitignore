@@ -6,8 +6,4 @@ cscope.files
 GTAGS
 GRTAGS
 GPATH
-config.*
-!config.h.in
-Makefile
-autom4te.cache/
-stamp-h1
+.*.swp
