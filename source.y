@@ -1,5 +1,6 @@
 %{
 
+#define yytext PREFIXtext
 int yyerror(char const *str)
 {
     extern char *yytext;
