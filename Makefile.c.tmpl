@@ -1,0 +1,27 @@
+DESTDIR=
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
+
+TARGET  = apps
+FILES   = main.c
+OBJS    := $(FILES:.c=.o)
+
+all: $(TARGET)
+
+install:
+  mkdir -p $(DESTDIR)$(bindir)
+  $(INSTALL) -m 755 $(TARGET) $(DESTDIR)$(bindir)
+
+clean:
+	$(RM) $(OBJS)
+
+$(OBJS)  : defs.h externs.h protos.h
+main.o   : inst.h vars.h
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+$(TARGET) : $(OBJS)
+	$(CC) -o $@ $^
+
