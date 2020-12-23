@@ -1,9 +1,13 @@
-DESTDIR = 
-bindir  = 
+DESTDIR=
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
 
-TARGET  = 
-FILES   = 
-OBJS     := $(FILES:.c=.o)
+TARGET  = apps
+FILES   = main.c
+OBJS    := $(FILES:.c=.o)
+CFLAGS  = 
+
 
 all: $(TARGET)
 
@@ -12,10 +16,10 @@ install:
 	$(INSTALL) -m 755 $(TARGET) $(DESTDIR)$(bindir)
 
 clean:
-	$(RM) $(TARGET) $(OBJS)
+	$(RM) $(OBJS)
 
-.c.o:
-	$(CC) $(CFLAGS) -c $<
+$(OBJS)  : defs.h externs.h protos.h
+main.o   : inst.h vars.h
 
 $(TARGET) : $(OBJS)
-	$(CC) -o $@ $^
+	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
